@@ -29,12 +29,20 @@ using namespace std;
 class Solution {
 public:
     string multiply(string num1, string num2) {
+        if (num1.size() == 1 || num2.size() == 1)
+            return to_string(stoi(num1) * stoi(num2));
+         
         
     }
 };
 
 int main()
 {
+    string num1 = "2";
+    string num2 = "3";
+    Solution solution;
+
+    cout << solution.multiply(num1, num2) << endl;
 
     return 0;
 }
