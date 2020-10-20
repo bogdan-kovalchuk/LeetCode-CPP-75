@@ -33,43 +33,26 @@ class Solution
 public:
     string multiply(string num1, string num2)
     {
-        if (num1.length() < 2 && num2.length() < 2)
-            return to_string(stoi(num1) * stoi(num2));
+        if (num1.length() < 2 || num2.length() < 2)
+            return simpl_mul(num1, num2);
 
         int min_len = min(num1.length(), num2.length());
         int m = min_len / 2;
 
         string x0, x1, y0, y1, z0, z1, z2;
 
-        if (num1.length() < 2)
-        {
-            x0 = "0";
-            x1 = num1;
-        }
-        else
-        {
-            x0 = num1.substr(m);
-            x1 = num1.substr(0, m);
-        }
+        x0 = num1.substr(num1.length() - m);
+        x1 = num1.substr(0, num1.length() - m);
 
-        y0 = num2.substr(m);
-        y1 = num2.substr(0, m);
+        y0 = num2.substr(num2.length() - m);
+        y1 = num2.substr(0, num2.length() - m);
 
         z0 = multiply(x0, y0);
-        z1 = add_str(multiply(x0, y1), multiply(x0, y1));
+        z1 = add_str(multiply(x0, y1), multiply(y0, x1));
         z2 = multiply(x1, y1);
 
-        int degree = min_len - m;
-
-        for (int i = 1; i < 2 * degree; ++i)
-        {
-            z2 += '0';
-        }
-
-        for (int i = 1; i < degree; ++i)
-        {
-            z1 += '0';
-        }
+        pow10_str(z2, 2*m);
+        pow10_str(z1, m);
 
         return add_str(add_str(z2, z1), z0);
     }
@@ -88,6 +71,28 @@ public:
             sum /= 10;
         }
         return str;
+    }
+
+    string simpl_mul(string num1, string num2)
+    {
+        string out = "0";
+        if (num1.length() > num2.length())
+        {
+            swap(num1, num2);
+        }
+
+        for (int i = 0; i < num1[0] - '0'; ++i)
+        {
+            out = add_str(out, num2);
+        }
+
+        return out;
+    }
+
+    void pow10_str(string &num, int degree)
+    {
+        for (int i = 0; i < degree; ++i)
+            num += '0';
     }
 };
 
