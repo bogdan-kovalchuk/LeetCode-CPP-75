@@ -32,11 +32,10 @@ class Solution
 public:
     void merge(vector<int> &nums1, int m, vector<int> &nums2, int n)
     {
-        int i = 0, j = 0, k;
-        vector <int> res;
+        int i = 0, j = 0;
+        vector<int> res;
 
-        k = min(m, n);
-        while(i < k && j < k)
+        while (i < m && j < n)
         {
             if (nums1[i] < nums2[j])
             {
@@ -49,6 +48,24 @@ public:
                 j++;
             }
         }
+
+        if (i != m)
+        {
+            for (; i < m; ++i)
+            {
+                res.push_back(nums1[i]);
+            }
+        }
+
+        if (j != n)
+        {
+            for (; j < n; ++j)
+            {
+                res.push_back(nums2[j]);
+            }
+        }
+
+        nums1 = res;
     }
 };
 
@@ -59,6 +76,11 @@ int main()
 
     Solution solution;
     solution.merge(nums1, 3, nums2, 3);
+
+    for (int i = 0; i < nums1.size(); ++i)
+    {
+        cout << nums1[i] << " ";
+    }
 
     return 0;
 }
