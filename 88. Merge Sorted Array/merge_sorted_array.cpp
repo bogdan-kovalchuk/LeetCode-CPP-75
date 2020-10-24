@@ -32,40 +32,25 @@ class Solution
 public:
     void merge(vector<int> &nums1, int m, vector<int> &nums2, int n)
     {
-        int i = 0, j = 0;
-        vector<int> res;
+        int i = m - 1;
+        int j = n - 1;
+        int k = m + n - 1;
 
-        while (i < m && j < n)
+        while (i >= 0 && j >= 0)
         {
-            if (nums1[i] < nums2[j])
+            if (nums1[i] > nums2[j])
             {
-                res.push_back(nums1[i]);
-                i++;
+                nums1[k--] = nums1[i--];
             }
             else
             {
-                res.push_back(nums2[j]);
-                j++;
+                nums1[k--] = nums2[j--];
             }
         }
-
-        if (i != m)
+        while (j >= 0)
         {
-            for (; i < m; ++i)
-            {
-                res.push_back(nums1[i]);
-            }
+            nums1[k--] = nums2[j--];
         }
-
-        if (j != n)
-        {
-            for (; j < n; ++j)
-            {
-                res.push_back(nums2[j]);
-            }
-        }
-
-        nums1 = res;
     }
 };
 
