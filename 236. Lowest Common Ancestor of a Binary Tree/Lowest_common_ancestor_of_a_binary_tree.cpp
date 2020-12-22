@@ -1,5 +1,7 @@
 #include <iostream>
 
+using namespace std;
+
 struct TreeNode
 {
     int val;
@@ -27,6 +29,14 @@ int main()
     root->right = new TreeNode(1);
     root->right->left = new TreeNode(0);
     root->right->right = new TreeNode(8);
+
+    Solution solution;
+
+    auto res = solution.lowestCommonAncestor(root, root->left, root->right);
+    cout << res->val << endl;
+
+    res = solution.lowestCommonAncestor(root, root->left, root->left->right->right);
+    cout << res->val << endl;
 
     return 0;
 }
