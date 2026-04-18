@@ -1,1 +1,6 @@
-// Write your code here
+class Solution {
+public:
+    int findKthLargest(vector<int>& nums, int k) {
+        
+    }
+};

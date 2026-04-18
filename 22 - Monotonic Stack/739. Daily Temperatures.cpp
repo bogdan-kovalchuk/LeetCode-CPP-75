@@ -1,1 +1,6 @@
-// Write your code here
+class Solution {
+public:
+    vector<int> dailyTemperatures(vector<int>& temperatures) {
+        
+    }
+};

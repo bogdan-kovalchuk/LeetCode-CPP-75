@@ -1,1 +1,6 @@
-// Write your code here
+class Solution {
+public:
+    string predictPartyVictory(string senate) {
+        
+    }
+};

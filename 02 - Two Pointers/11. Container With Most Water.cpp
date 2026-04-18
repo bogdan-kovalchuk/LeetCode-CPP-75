@@ -1,1 +1,6 @@
-// Write your code here
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        
+    }
+};

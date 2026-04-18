@@ -1,1 +1,6 @@
-// Write your code here
+class Solution {
+public:
+    string reverseVowels(string s) {
+        
+    }
+};

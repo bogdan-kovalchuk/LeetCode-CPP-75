@@ -1,1 +1,6 @@
-// Write your code here
+class Solution {
+public:
+    bool canPlaceFlowers(vector<int>& flowerbed, int n) {
+        
+    }
+};

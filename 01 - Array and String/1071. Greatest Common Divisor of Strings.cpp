@@ -1,1 +1,6 @@
-// Write your code here
+class Solution {
+public:
+    string gcdOfStrings(string str1, string str2) {
+        
+    }
+};
