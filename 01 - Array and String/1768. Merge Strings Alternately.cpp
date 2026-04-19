@@ -1,15 +1,32 @@
 #include "../leetcode_test.hpp"
 
-class Solution {
+class Solution
+{
 public:
-    string mergeAlternately(string word1, string word2) {
-        throw logic_error("Not implemented");
+    string mergeAlternately(string word1, string word2)
+    {
+        string result = "";
+        int i = 0;
+        while (i < word1.length() || i < word2.length())
+        {
+            if (i < word1.length())
+            {
+                result += word1[i];
+            }
+            if (i < word2.length())
+            {
+                result += word2[i];
+            }
+            i++;
+        }
+        return result;
     }
 };
 
 // LOCAL_TEST_BEGIN
 #ifdef LOCAL_TEST
-int main() {
+int main()
+{
     {
         Solution solution;
         string word1 = "abc";
