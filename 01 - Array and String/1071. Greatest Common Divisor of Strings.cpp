@@ -1,15 +1,31 @@
 #include "../leetcode_test.hpp"
 
-class Solution {
+class Solution
+{
 public:
-    string gcdOfStrings(string str1, string str2) {
-        throw logic_error("Not implemented");
+    string gcdOfStrings(string str1, string str2)
+    {
+        if (str1 + str2 != str2 + str1)
+            return "";
+
+        int len1 = str1.length();
+        int len2 = str2.length();
+
+        while (len2 != 0)
+        {
+            int r = len1 % len2;
+            len1 = len2;
+            len2 = r;
+        }
+
+        return str1.substr(0, len1);
     }
 };
 
 // LOCAL_TEST_BEGIN
 #ifdef LOCAL_TEST
-int main() {
+int main()
+{
     {
         Solution solution;
         string str1 = "ABCABC";
