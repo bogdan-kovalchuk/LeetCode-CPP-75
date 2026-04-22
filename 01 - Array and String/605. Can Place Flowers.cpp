@@ -1,15 +1,33 @@
 #include "../leetcode_test.hpp"
 
-class Solution {
+class Solution
+{
 public:
-    bool canPlaceFlowers(vector<int>& flowerbed, int n) {
-        throw logic_error("Not implemented");
+    bool canPlaceFlowers(vector<int> &flowerbed, int n)
+    {
+        int count = 0;
+        for (int i = 0; i < flowerbed.size(); i++)
+        {
+            if (flowerbed[i] == 0)
+            {
+                bool left = (i == 0) || (flowerbed[i - 1] == 0);
+                bool right = (i == flowerbed.size() - 1) || (flowerbed[i + 1] == 0);
+
+                if (left && right)
+                {
+                    count++;
+                    i++;
+                }
+            }
+        }
+        return count >= n;
     }
 };
 
 // LOCAL_TEST_BEGIN
 #ifdef LOCAL_TEST
-int main() {
+int main()
+{
     {
         Solution solution;
         vector<int> flowerbed = vector<int>{1, 0, 0, 0, 1};
