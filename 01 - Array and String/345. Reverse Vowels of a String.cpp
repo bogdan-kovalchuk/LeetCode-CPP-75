@@ -1,15 +1,43 @@
 #include "../leetcode_test.hpp"
 
-class Solution {
+class Solution
+{
 public:
-    string reverseVowels(string s) {
-        throw logic_error("Not implemented");
+    bool isVowel(char c)
+    {
+        c = std::tolower(static_cast<unsigned char>(c));
+        return string("aeiou").find(c) != string::npos;
+    }
+
+    string reverseVowels(string s)
+    {
+        int i = 0;
+        int j = static_cast<int>(s.size()) - 1;
+
+        while (i < j)
+        {
+            while (i < j && !isVowel(s[i]))
+                i++;
+
+            while (i < j && !isVowel(s[j]))
+                j--;
+
+            if (i < j)
+            {
+                std::swap(s[i], s[j]);
+                i++;
+                j--;
+            }
+        }
+
+        return s;
     }
 };
 
 // LOCAL_TEST_BEGIN
 #ifdef LOCAL_TEST
-int main() {
+int main()
+{
     {
         Solution solution;
         string s = "IceCreAm";
