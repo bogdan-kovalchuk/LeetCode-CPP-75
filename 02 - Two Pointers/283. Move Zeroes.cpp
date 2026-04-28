@@ -1,15 +1,27 @@
 #include "../leetcode_test.hpp"
 
-class Solution {
+class Solution
+{
 public:
-    void moveZeroes(vector<int>& nums) {
-        throw logic_error("Not implemented");
+    void moveZeroes(vector<int> &nums)
+    {
+        int i = 0;
+
+        for (int j = 0; j < nums.size(); j++)
+        {
+            if (nums[j] != 0)
+            {
+                swap(nums[i], nums[j]);
+                i++;
+            }
+        }
     }
 };
 
 // LOCAL_TEST_BEGIN
 #ifdef LOCAL_TEST
-int main() {
+int main()
+{
     {
         Solution solution;
         vector<int> nums = vector<int>{0, 1, 0, 3, 12};
