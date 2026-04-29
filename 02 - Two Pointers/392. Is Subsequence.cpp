@@ -1,19 +1,29 @@
 #include "../leetcode_test.hpp"
 
-class Solution {
+class Solution
+{
 public:
-    bool isSubsequence(string s, string t) {
-        throw logic_error("Not implemented");
+    bool isSubsequence(string s, string t)
+    {
+        int i = 0;
+        for (int j = 0; j < t.length() && i < s.length(); j++)
+        {
+            if (t[j] == s[i])
+                i++;
+        }
+
+        return i == s.length();
     }
 };
 
 // LOCAL_TEST_BEGIN
 #ifdef LOCAL_TEST
-int main() {
+int main()
+{
     {
         Solution solution;
         string s = "abc";
-        string t = "ahbgdc";
+        string t = "tvkahbgdc";
         bool actual = solution.isSubsequence(s, t);
         bool expected = true;
         leetcode::expectEqual(actual, expected, "Example 1");
