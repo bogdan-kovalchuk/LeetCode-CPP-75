@@ -1,15 +1,29 @@
 #include "../leetcode_test.hpp"
+#include <map>
+#include <set>
 
-class Solution {
+class Solution
+{
 public:
-    bool uniqueOccurrences(vector<int>& arr) {
-        throw logic_error("Not implemented");
+    bool uniqueOccurrences(vector<int> &arr)
+    {
+        std::map<int, int> m;
+        std::set<int> s;
+
+        for (const auto &num : arr)
+            m[num]++;
+
+        for (const auto &[k, v] : m)
+            s.insert(v);
+
+        return m.size() == s.size();
     }
 };
 
 // LOCAL_TEST_BEGIN
 #ifdef LOCAL_TEST
-int main() {
+int main()
+{
     {
         Solution solution;
         vector<int> arr = vector<int>{1, 2, 2, 1, 1, 3};
