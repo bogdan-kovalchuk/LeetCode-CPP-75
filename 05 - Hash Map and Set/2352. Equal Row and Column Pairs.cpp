@@ -1,15 +1,41 @@
 #include "../leetcode_test.hpp"
 
-class Solution {
+class Solution
+{
 public:
-    int equalPairs(vector<vector<int>>& grid) {
-        throw logic_error("Not implemented");
+    int equalPairs(vector<vector<int>> &grid)
+    {
+        int result = 0;
+        int n = grid.size();
+
+        for (int i = 0; i < n; ++i)
+        {
+            for (int j = 0; j < n; ++j)
+            {
+                bool equal = true;
+
+                for (int k = 0; k < n; ++k)
+                {
+                    if (grid[i][k] != grid[k][j])
+                    {
+                        equal = false;
+                        break;
+                    }
+                }
+
+                if (equal)
+                    result++;
+            }
+        }
+
+        return result;
     }
 };
 
 // LOCAL_TEST_BEGIN
 #ifdef LOCAL_TEST
-int main() {
+int main()
+{
     {
         Solution solution;
         vector<vector<int>> grid = vector<vector<int>>{vector<int>{3, 2, 1}, vector<int>{1, 7, 6}, vector<int>{2, 7, 7}};
