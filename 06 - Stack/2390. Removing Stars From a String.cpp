@@ -1,15 +1,26 @@
 #include "../leetcode_test.hpp"
 
-class Solution {
+class Solution
+{
 public:
-    string removeStars(string s) {
-        throw logic_error("Not implemented");
+    string removeStars(string s)
+    {
+        std::string result;
+        for (const auto &ch : s)
+        {
+            if (ch == '*' && !result.empty())
+                result.pop_back();
+            else
+                result.push_back(ch);
+        }
+        return result;
     }
 };
 
 // LOCAL_TEST_BEGIN
 #ifdef LOCAL_TEST
-int main() {
+int main()
+{
     {
         Solution solution;
         string s = "leet**cod*e";
