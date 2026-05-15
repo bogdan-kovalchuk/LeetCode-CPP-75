@@ -1,15 +1,46 @@
 #include "../leetcode_test.hpp"
 
-class Solution {
+class Solution
+{
 public:
-    vector<int> asteroidCollision(vector<int>& asteroids) {
-        throw logic_error("Not implemented");
+    vector<int> asteroidCollision(vector<int> &asteroids)
+    {
+        vector<int> result;
+
+        for (int asteroid : asteroids)
+        {
+            bool destroyed = false;
+
+            while (!result.empty() && result.back() > 0 && asteroid < 0)
+            {
+                if (result.back() < -asteroid)
+                {
+                    result.pop_back();
+                    continue;
+                }
+                else if (result.back() == -asteroid)
+                {
+                    result.pop_back();
+                }
+
+                destroyed = true;
+                break;
+            }
+
+            if (!destroyed)
+            {
+                result.push_back(asteroid);
+            }
+        }
+
+        return result;
     }
 };
 
 // LOCAL_TEST_BEGIN
 #ifdef LOCAL_TEST
-int main() {
+int main()
+{
     {
         Solution solution;
         vector<int> asteroids = vector<int>{5, 10, -5};
